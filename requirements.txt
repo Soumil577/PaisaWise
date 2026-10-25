@@ -1,0 +1,8 @@
+# Runtime dependencies. scikit-learn is pinned because the saved joblib model depends on its serialization format.
+# Retrain the structured model with: python backend/train_model.py.
+Flask==3.1.3
+gunicorn==26.2.0
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+joblib==1.5.3

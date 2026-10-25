@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest==9.1.1
+matplotlib==3.10.8   # only for render_dashboard() in the notebook

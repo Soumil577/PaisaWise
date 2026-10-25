@@ -1,0 +1,152 @@
+{
+  "model": "logistic_regression_structured",
+  "source": "user-provided CSV: upi_transactions_2024.csv",
+  "dataset": {
+    "source_file": "upi_transactions_2024.csv",
+    "source_rows": 250000,
+    "usable_rows": 250000,
+    "discarded_rows": 0,
+    "source_category_counts": {
+      "Grocery": 49966,
+      "Food": 37464,
+      "Shopping": 29872,
+      "Fuel": 25063,
+      "Other": 24828,
+      "Utilities": 22338,
+      "Transport": 20105,
+      "Entertainment": 20103,
+      "Healthcare": 12663,
+      "Education": 7598
+    },
+    "training_category_counts": {
+      "Food": 87430,
+      "Transport": 45168,
+      "Shopping": 29872,
+      "Other": 24828,
+      "Bills": 22338,
+      "Entertainment": 20103,
+      "Healthcare": 12663,
+      "Education": 7598
+    },
+    "feature_columns": [
+      "transaction_type",
+      "transaction_status",
+      "day_of_week",
+      "device_type",
+      "network_type",
+      "amount",
+      "hour_of_day",
+      "is_weekend"
+    ],
+    "target": "merchant_category mapped to PaisaWise category labels"
+  },
+  "n_train": 200000,
+  "n_test": 50000,
+  "classes": [
+    "Bills",
+    "Education",
+    "Entertainment",
+    "Food",
+    "Healthcare",
+    "Other",
+    "Shopping",
+    "Transport"
+  ],
+  "holdout": {
+    "accuracy": 0.3739,
+    "precision_macro": 0.1507,
+    "recall_macro": 0.177,
+    "f1_macro": 0.1373,
+    "classification_report": {
+      "Bills": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4467.0
+      },
+      "Education": {
+        "precision": 0.5102880658436214,
+        "recall": 0.1631578947368421,
+        "f1-score": 0.2472582253240279,
+        "support": 1520.0
+      },
+      "Entertainment": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4021.0
+      },
+      "Food": {
+        "precision": 0.38001871676063087,
+        "recall": 0.9521331350794922,
+        "f1-score": 0.5432239750721896,
+        "support": 17486.0
+      },
+      "Healthcare": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2533.0
+      },
+      "Other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 4966.0
+      },
+      "Shopping": {
+        "precision": 0.3151430075451834,
+        "recall": 0.30063608972212924,
+        "f1-score": 0.3077186670093378,
+        "support": 5974.0
+      },
+      "Transport": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 9033.0
+      },
+      "accuracy": 0.37386,
+      "macro avg": {
+        "precision": 0.15068122376867946,
+        "recall": 0.17699088994230794,
+        "f1-score": 0.1372751084256944,
+        "support": 50000.0
+      },
+      "weighted avg": {
+        "precision": 0.18606618936867242,
+        "recall": 0.37386,
+        "f1-score": 0.23425916494637222,
+        "support": 50000.0
+      }
+    }
+  },
+  "features": [
+    "transaction_type",
+    "transaction_status",
+    "day_of_week",
+    "device_type",
+    "network_type",
+    "amount",
+    "hour_of_day",
+    "is_weekend"
+  ],
+  "feature_transformations": {
+    "amount": "log1p(amount) to reduce right-skew"
+  },
+  "excluded_fields": [
+    "transaction id",
+    "sender/receiver age groups",
+    "sender state",
+    "sender/receiver bank",
+    "fraud_flag"
+  ],
+  "limitations": [
+    "This model predicts categories from structured transaction fields, not free-text descriptions.",
+    "The hold-out split is drawn from the supplied dataset; it does not establish performance on all real-world users or banks.",
+    "The dataset's provenance and real-world authenticity have not been independently verified by this training script.",
+    "Category labels are mapped from merchant_category; Grocery is grouped as Food, Fuel as Transport, and Utilities as Bills."
+  ],
+  "training_seconds": 10.49,
+  "random_seed": 42
+}

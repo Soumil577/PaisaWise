@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+node_modules/
+.pytest_cache/
+.git
+# Keep the training source CSV in version control for reproducibility.
+data/*
+!data/.gitkeep
+!data/upi_transactions_2024.csv

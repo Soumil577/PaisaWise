@@ -1,0 +1,1 @@
+{ "name": "paisawise-e2e", "private": true, "scripts": { "test": "node e2e.js" }, "devDependencies": { "jsdom": "^26.0.0" } }

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+node_modules/
+.pytest_cache/
+.git
+notebook
+# Include the supplied CSV because the Docker build can retrain the model if needed.
+data/*
+!data/.gitkeep
+!data/upi_transactions_2024.csv

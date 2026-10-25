@@ -1,0 +1,18 @@
+# Render.com blueprint: New + -> Blueprint, point at this repo.
+services:
+  - type: web
+    name: paisawise
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    envVars:
+      - key: PAISAWISE_TOKEN
+        generateValue: true          # then paste it into Settings -> Server connection in the app
+      - key: PAISAWISE_TRUST_PROXY
+        value: "1"
+      - key: PAISAWISE_DATA_DIR
+        value: /data
+    disk:
+      name: paisawise-data
+      mountPath: /data
+      sizeGB: 1

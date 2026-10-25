@@ -1,0 +1,11 @@
+services:
+  paisawise:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      PAISAWISE_TOKEN: ${PAISAWISE_TOKEN:-}        # set this if the port is reachable by anyone but you
+      PAISAWISE_TRUST_PROXY: ${PAISAWISE_TRUST_PROXY:-0}
+    volumes: ["paisawise-data:/data"]
+    restart: unless-stopped
+volumes:
+  paisawise-data:
